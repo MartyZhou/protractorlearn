@@ -4,6 +4,9 @@ describe('translate', function () {
         var xml2js = require('xml2js');
         var parser = new xml2js.Parser();
         var articals = [];
+        var content = '<html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><title>articles</title></head><body><h1>articles</h1><h4 height="1em">businessmagazin</h4><ul>';
+        var ncx = '<?xml version="1.0" encoding="utf-8"?><!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN" "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd"><ncx xmlns:mbp="http://mobipocket.com/ns/mbp" xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="en-US"><head><meta content="martyzhou" name="dtb:uid" /><meta content="2" name="dtb:depth" /><meta content="0" name="dtb:totalPageCount" /><meta content="0" name="dtb:maxPageNumber" /></head><docTitle><text>Business Magazin</text></docTitle><docAuthor><text>Marty</text></docAuthor><navMap>	<navPoint playOrder="0" class="periodical" id="periodical"><navLabel><text>articles</text></navLabel><content src="../html/contents.html" /><navPoint playOrder="1" class="section" id="translate"><navLabel><text>articles</text></navLabel><content src="../html/0.html" />';
+        var opf = '<?xml version="1.0" encoding="utf-8"?><package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="martyzhou"><metadata>	<dc-metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>Business Magazin</dc:title><dc:language>en-US</dc:language><dc:Identifier id="uid">02FFA518EB</dc:Identifier><dc:creator>Marty</dc:creator><dc:publisher>Marty</dc:publisher><dc:subject>magazine</dc:subject><dc:date>2015-10-22</dc:date><dc:description>Business Magazin</dc:description></dc-metadata><x-metadata><output content-type="application/x-mobipocket-subscription-magazine" encoding="utf-8"/></x-metadata></metadata><manifest>';
 
         browser.ignoreSynchronization = true;
 
@@ -20,25 +23,42 @@ describe('translate', function () {
             feed.rss.channel[0].item.forEach(function (item, index) {
                 if (index < 10) {
                     var artical = { link: item.link[0] };
-
-                    console.log('step 1 ' + artical.link);
+                    artical.params = [];
+                    artical.html = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 
                     browser.get(artical.link);
                     var page = browser.element(by.className('a-entry'));
                     var title = page.all(by.tagName('h1')).first();
+                    var ps = page.all(by.tagName('p'));
+
+
                     title.getText().then(function (data) {
                         artical.title = data.replace(/"/g, '');
-
-                        console.log('step 2 ' + artical.title);
+                        artical.html = artical.html + '<title>' + artical.title + '</title></head><body><h1>' + artical.title + '</h1><article>';
                     });
 
-                    page.getText().then(function (data) {
-                        artical.src = data;
-                        
-                        console.log('step 3 ' + artical.src);
+                    var count;
+                    ps.count().then(function (data) {
+                        count = data - 2;
                     });
 
-                    articals.push(artical);
+                    protractor.promise.controlFlow().execute(function () {
+                        for (var i = 0; i < count; i++) {
+                            var p = ps.get(i);
+                            p.getText().then(function (data) {
+                                artical.html = artical.html + '<p>' + data + '</p>';
+                                artical.params.push(data);
+                            });
+                        }
+                    });
+
+                    protractor.promise.controlFlow().execute(function () {
+                        artical.html = artical.html + '</article>';
+                    });
+
+                    protractor.promise.controlFlow().execute(function () {
+                        articals.push(artical);
+                    });
                 }
             });
         });
@@ -49,27 +69,53 @@ describe('translate', function () {
             var translate = browser.element(by.id('gt-submit'));
 
             articals.forEach(function (item, index) {
-                console.log('step 4 translate.')
-                src.clear();
-                src.sendKeys(item.src);
-                translate.click();
-                browser.sleep(3000);
+                item.html = item.html + '<h2>English</h2><article>';
+                item.params.forEach(function (p) {
+                    src.clear();
+                    src.sendKeys(p);
+                    translate.click();
+                    browser.sleep(2000);
 
-                var result = browser.element(by.id('result_box'));
+                    var result = browser.element(by.id('result_box'));
 
-                result.getText().then(function (data) {
-                    item.dest = data;
-                    fs.writeFileSync('./articals/' + item.title + '.txt', item.src + '\r\n\r\n\r\n' + item.dest);
+                    result.getText().then(function (data) {
+                        item.html = item.html + '<p>' + data + '</p>';
+                    });
+                });
+
+                protractor.promise.controlFlow().execute(function () {
+                    item.html = item.html + '</article></body></html>';
                 });
             });
         });
 
-        //protractor.promise.controlFlow().execute(function () {
-        //    articals.forEach(function (item, index) {
-        //        console.log('step 5 write file.')
-        //        fs.writeFileSync('./articals/' + item.title + '.txt', item.src);
-        //    });
-        //});
+        protractor.promise.controlFlow().execute(function () {
+            articals.forEach(function (item, index) {
+                console.log(item.html);
+                content = content + '<li><a href="' + index + '.html">' + item.title + '</a></li>';
+                ncx = ncx + '<navPoint playOrder="' + index + 2 + '" class="article" id="item-' + index + '"><navLabel><text>' + item.title + '</text></navLabel><content src="../html/' + index + '.html" /><mbp:meta name="author">google</mbp:meta></navPoint>';
+                opf = opf + '<item href="html/' + index + '.html" media-type="application/xhtml+xml" id="' + index + '"/>';
+
+                fs.writeFileSync('./result/html/' + index + '.html', item.html);
+            });
+        });
+
+        protractor.promise.controlFlow().execute(function () {
+            content = content + '</ul></body></html>';
+            ncx = ncx + '</navPoint></navPoint></navMap></ncx>';
+            opf = opf + '<item href="html/contents.html" media-type="application/xhtml+xml" id="contents"/>';
+            opf = opf + '<item href="misc/nav-contents.ncx" media-type="application/x-dtbncx+xml" id="nav-contents"/>';
+            opf = opf + '</manifest><spine toc="nav-contents"><itemref idref="contents"/>';
+            articals.forEach(function (item, index) {
+                opf = opf + '<itemref idref="' + index + '"/>';
+            });
+
+            opf = opf + '</spine><guide><reference href="html/contents.html" type="toc" title="Table of Contents" /><reference href="html/0.html" type="text" title="' + articals[0].title + '"/></guide></package>';
+
+            fs.writeFileSync('./result/html/contents.html', content);
+            fs.writeFileSync('./result/misc/nav-contents.ncx', ncx);
+            fs.writeFileSync('./result/businessmagazin.opf', opf);
+        });
 
         /*
         browser.get('http://www.businessmagazin.ro/actualitate/invatamantul-gratuit-nu-e-gratuit-cat-costa-sa-fii-elev-la-o-scoala-de-stat-din-romania-15789601');
