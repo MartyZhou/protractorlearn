@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="KindleFere_2010-10-15">
+<!-- 元数据 -->
+<metadata>
+	<dc-metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+		<dc:title>Kindle 伴侣期刊（模板）</dc:title> <!-- 名称 -->
+		<dc:language>zh-cn</dc:language> <!-- 语言 -->
+		<dc:Identifier id="uid">02FFA518EB</dc:Identifier> <!-- 字典标识符 -->
+		<dc:creator>Kindle伴侣</dc:creator> <!-- 创建人 -->
+		<dc:publisher>kindlefere.com</dc:publisher> <!-- 发布商 -->
+		<dc:subject>杂志</dc:subject> <!-- 类型标签 -->
+		<dc:date>2015-10-22</dc:date> <!-- 发布日期 -->
+		<dc:description>Kindle伴侣（KindleFere.com）的建立是为解决和 Kindle 相关的问题，帮助您更便捷、深入地使用你手中的 kindle 阅读器，让读书成为生命的一部分，让灵魂永远行走在路上。</dc:description> <!-- 描述 -->
+	</dc-metadata>
+	<x-metadata>
+		<output content-type="application/x-mobipocket-subscription-magazine" encoding="utf-8"/>
+		<EmbeddedCover>image/cover.jpg</EmbeddedCover><!-- 封面图片 -->
+	</x-metadata>
+</metadata>
+<!-- 资源列表 -->
+<manifest>
+	<!-- 文章页面 -->
+	<item href="html/001.html" media-type="application/xhtml+xml" id="001"/>
+	<item href="html/002.html" media-type="application/xhtml+xml" id="002"/>
+	<item href="html/003.html" media-type="application/xhtml+xml" id="003"/>
+	<item href="html/004.html" media-type="application/xhtml+xml" id="004"/>
+	<item href="html/005.html" media-type="application/xhtml+xml" id="005"/>
+	<item href="html/006.html" media-type="application/xhtml+xml" id="006"/>
+	<item href="html/007.html" media-type="application/xhtml+xml" id="007"/>
+	<item href="html/008.html" media-type="application/xhtml+xml" id="008"/>
+	<!-- 图片资源 -->
+	<item href="image/001-thumb.jpg" media-type="image/jpeg" id="001-thumb"/>
+	<item href="image/002-thumb.jpg" media-type="image/jpeg" id="002-thumb"/>
+	<item href="image/003-thumb.jpg" media-type="image/jpeg" id="003-thumb"/>
+	<item href="image/004-thumb.jpg" media-type="image/jpeg" id="004-thumb"/>
+	<item href="image/005-thumb.jpg" media-type="image/jpeg" id="005-thumb"/>
+	<item href="image/006-thumb.jpg" media-type="image/jpeg" id="006-thumb"/>
+	<item href="image/007-thumb.jpg" media-type="image/jpeg" id="007-thumb"/>
+	<item href="image/008-thumb.png" media-type="image/png" id="008-thumb"/>
+	<item href="image/009-thumb.png" media-type="image/png" id="009-thumb"/>
+	<!-- 其他资源 -->
+	<item href="html/contents.html" media-type="application/xhtml+xml" id="contents"/> <!-- 目录 -->
+	<item href="misc/nav-contents.ncx" media-type="application/x-dtbncx+xml" id="nav-contents"/> <!-- 目录 -->
+	<item href="image/cover.jpg" media-type="image/jpeg" id="cover_img" /> <!-- 封面 -->
+	<item href="image/masthead.gif" media-type="image/gif" id="masthead"/> <!-- 标题图片 -->
+</manifest>
+<!-- 文件骨架 -->
+<spine toc="nav-contents">
+	<itemref idref="contents"/>
+	<itemref idref="001"/>
+	<itemref idref="002"/>
+	<itemref idref="003"/>
+	<itemref idref="004"/>
+	<itemref idref="005"/>
+	<itemref idref="006"/>
+	<itemref idref="007"/>
+	<itemref idref="008"/>
+</spine>
+<!-- 页面指引 -->
+<guide>
+	<reference href="html/contents.html" type="toc" title="Table of Contents" />
+	<reference href="html/001.html" type="text" title="《自由选择》地球人不可不读的书"/>
+</guide>
+</package>

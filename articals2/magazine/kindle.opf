@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="KindleFere_2010-10-15">
+<metadata>
+	<dc-metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+		<dc:title>Kindle</dc:title>
+		<dc:language>zh-cn</dc:language>
+		<dc:Identifier id="uid">02FFA518EB</dc:Identifier>
+		<dc:creator>Kindle</dc:creator>
+		<dc:publisher>kindlefere.com</dc:publisher>
+		<dc:subject>magazine</dc:subject>
+		<dc:date>2015-10-22</dc:date>
+		<dc:description>kindle</dc:description>
+	</dc-metadata>
+	<x-metadata>
+		<output content-type="application/x-mobipocket-subscription-magazine" encoding="utf-8"/>
+	</x-metadata>
+</metadata>
+<manifest>
+	<item href="html/001.html" media-type="application/xhtml+xml" id="001"/>
+	<item href="html/002.html" media-type="application/xhtml+xml" id="002"/>
+	<item href="html/contents.html" media-type="application/xhtml+xml" id="contents"/>
+	<item href="misc/nav-contents.ncx" media-type="application/x-dtbncx+xml" id="nav-contents"/>
+</manifest>
+<spine toc="nav-contents">
+	<itemref idref="contents"/>
+	<itemref idref="001"/>
+	<itemref idref="002"/>
+</spine>
+<guide>
+	<reference href="html/contents.html" type="toc" title="Table of Contents" />
+	<reference href="html/001.html" type="text" title="text 1"/>
+</guide>
+</package>
