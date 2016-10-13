@@ -1,5 +1,6 @@
 //var http = require('http-request');
 var jsdom = require("jsdom");
+var serializeDocument = require("jsdom").serializeDocument;
 var fs = require('fs');
 var xml2js = require('xml2js');
 var parser = new xml2js.Parser();
@@ -7,7 +8,30 @@ var parser = new xml2js.Parser();
 
 fs.readFile('./news1.html', function (err, data) {
     jsdom.env(data.toString(), function (err, window) {
-        console.log(window.document.body);
+        console.log(window.document.title);
+        console.log(window.document.head);
+
+        console.log(window.document.head.children.length);
+        var count = window.document.head.children.length;
+        for (var i = 2; i < count; i++) {
+            window.document.head.children.item(2).remove();
+        }
+
+        console.log(window.document.head.children[0]);
+        console.log(window.document.head.children[1]);
+        console.log(window.document.head.children.length);
+        console.log(window.document.title);
+
+        var articalElement = window.document.getElementsByClassName('panel-body').item(0);
+        
+        var bodyChildrenCount = window.document.body.children.length;
+        for (var i = 0; i < bodyChildrenCount; i++) {
+            window.document.body.children.item(0).remove();
+        }
+
+        window.document.body.appendChild(articalElement);
+
+        fs.writeFileSync('./news1less.html', serializeDocument(window.document));
     });
 });
 
