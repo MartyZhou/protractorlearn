@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="KindleFere_2010-10-15">
+<!-- 元数据 -->
+<metadata>
+	<dc-metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+		<dc:title>bbc news</dc:title> <!-- 名称 -->
+		<dc:language>en-GB</dc:language> <!-- 语言 -->
+		<dc:Identifier id="uid">02FFA518EB</dc:Identifier> <!-- 字典标识符 -->
+		<dc:creator>Kindle</dc:creator> <!-- 创建人 -->
+		<dc:publisher>kindlefere.com</dc:publisher> <!-- 发布商 -->
+		<dc:subject>daily</dc:subject> <!-- 类型标签 -->
+		<dc:date>2015-10-22</dc:date> <!-- 发布日期 -->
+		<dc:description>Kindle</dc:description> <!-- 描述 -->
+	</dc-metadata>
+	<x-metadata>
+		<output content-type="application/x-mobipocket-subscription-magazine" encoding="utf-8"/>
+	</x-metadata>
+</metadata>
+<!-- 资源列表 -->
+<manifest>
+	<!-- 文章页面 -->
+	<item href="html/0.html" media-type="application/xhtml+xml" id="0"/>
+	<item href="html/1.html" media-type="application/xhtml+xml" id="1"/>
+	<!-- 图片资源 -->
+	<!-- 其他资源 -->
+	<item href="html/contents.html" media-type="application/xhtml+xml" id="contents"/> <!-- 目录 -->
+	<item href="misc/nav-contents.ncx" media-type="application/x-dtbncx+xml" id="nav-contents"/> <!-- 目录 -->
+</manifest>
+<!-- 文件骨架 -->
+<spine toc="nav-contents">
+	<itemref idref="contents"/>
+	<itemref idref="0"/>
+	<itemref idref="1"/>
+</spine>
+<!-- 页面指引 -->
+<guide>
+	<reference href="html/contents.html" type="toc" title="Table of Contents" />
+</guide>
+</package>
