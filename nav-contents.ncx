@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<ncx>
+  <docTitle>
+    <text>My Daily Sat Oct 15 2016</text>
+  </docTitle>
+  <docAuthor>
+    <text>Marty Zhou</text>
+  </docAuthor>
+  <navMap>
+    <navPoint playOrder="0" class="periodical" id="periodical">
+      <navLabel>
+        <text>Contents</text>
+      </navLabel>
+      <content src="./contents.html"/>
+      <navPoint>
+        <navLabel>
+          <text>BBC News</text>
+        </navLabel>
+        <content src="./contents.html"/>
+        <navPoint>
+          <navLabel>
+            <text>Climate change: 'Monumental' deal to cut HFCs, fastest growing greenhouse gases - BBC News</text>
+          </navLabel>
+          <content src="./bbc/Climate change: 'Monumental' deal to cut HFCs, fastest growing greenhouse gases - BBC News.html"/>
+        </navPoint>
+        <navPoint>
+          <navLabel>
+            <text>Yemen conflict: Saudis blame funeral hall bombing on mistake - BBC News</text>
+          </navLabel>
+          <content src="./bbc/Yemen conflict: Saudis blame funeral hall bombing on mistake - BBC News.html"/>
+        </navPoint>
+        <navPoint>
+          <navLabel>
+            <text>Children in Calais Jungle to arrive in UK 'in days' - BBC News</text>
+          </navLabel>
+          <content src="./bbc/Children in Calais Jungle to arrive in UK 'in days' - BBC News.html"/>
+        </navPoint>
+        <navPoint>
+          <navLabel>
+            <text>Iraq violence: Dozens dead in Baghdad suicide attack on Shia - BBC News</text>
+          </navLabel>
+          <content src="./bbc/Iraq violence: Dozens dead in Baghdad suicide attack on Shia - BBC News.html"/>
+        </navPoint>
+        <navPoint>
+          <navLabel>
+            <text>US election 2016: Trump says sex assault claims aimed to hurt him - BBC News</text>
+          </navLabel>
+          <content src="./bbc/US election 2016: Trump says sex assault claims aimed to hurt him - BBC News.html"/>
+        </navPoint>
+        <navPoint>
+          <navLabel>
+            <text>US and Russia discuss Syria ceasefire in Switzerland - BBC News</text>
+          </navLabel>
+          <content src="./bbc/US and Russia discuss Syria ceasefire in Switzerland - BBC News.html"/>
+        </navPoint>
+        <navPoint>
+          <navLabel>
+            <text>Brazil opens Latin America's first elephant sanctuary - BBC News</text>
+          </navLabel>
+          <content src="./bbc/Brazil opens Latin America's first elephant sanctuary - BBC News.html"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+  </navMap>
+</ncx>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <dc-metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <dc:title>My Daily</dc:title>
+      <dc:language>en-GB</dc:language>
+      <dc:creator>Marty Zhou</dc:creator>
+      <dc:publisher>martyzhou.com</dc:publisher>
+      <dc:date>Sat Oct 15 2016</dc:date>
+    </dc-metadata>
+    <x-metadata>
+      <output content-type="application/x-mobipocket-subscription-magazine" encoding="utf-8"/>
+    </x-metadata>
+  </metadata>
+  <manifest>
+    <item href="contents.html" media-type="application/xhtml+xml" id="contents"/>
+    <item href="nav-contents.ncx" media-type="application/x-dtbncx+xml" id="nav-contents"/>
+    <item href="./bbc/Climate change: 'Monumental' deal to cut HFCs, fastest growing greenhouse gases - BBC News.html" media-type="application/xhtml+xml" id="./bbc/Climate change: 'Monumental' deal to cut HFCs, fastest growing greenhouse gases - BBC News.html"/>
+    <item href="./bbc/Yemen conflict: Saudis blame funeral hall bombing on mistake - BBC News.html" media-type="application/xhtml+xml" id="./bbc/Yemen conflict: Saudis blame funeral hall bombing on mistake - BBC News.html"/>
+    <item href="./bbc/Children in Calais Jungle to arrive in UK 'in days' - BBC News.html" media-type="application/xhtml+xml" id="./bbc/Children in Calais Jungle to arrive in UK 'in days' - BBC News.html"/>
+    <item href="./bbc/Iraq violence: Dozens dead in Baghdad suicide attack on Shia - BBC News.html" media-type="application/xhtml+xml" id="./bbc/Iraq violence: Dozens dead in Baghdad suicide attack on Shia - BBC News.html"/>
+    <item href="./bbc/US election 2016: Trump says sex assault claims aimed to hurt him - BBC News.html" media-type="application/xhtml+xml" id="./bbc/US election 2016: Trump says sex assault claims aimed to hurt him - BBC News.html"/>
+    <item href="./bbc/US and Russia discuss Syria ceasefire in Switzerland - BBC News.html" media-type="application/xhtml+xml" id="./bbc/US and Russia discuss Syria ceasefire in Switzerland - BBC News.html"/>
+    <item href="./bbc/Brazil opens Latin America's first elephant sanctuary - BBC News.html" media-type="application/xhtml+xml" id="./bbc/Brazil opens Latin America's first elephant sanctuary - BBC News.html"/>
+  </manifest>
+  <spine toc="nav-contents">
+    <itemref idref="contents"/>
+    <itemref idref="./bbc/Climate change: 'Monumental' deal to cut HFCs, fastest growing greenhouse gases - BBC News.html"/>
+    <itemref idref="./bbc/Yemen conflict: Saudis blame funeral hall bombing on mistake - BBC News.html"/>
+    <itemref idref="./bbc/Children in Calais Jungle to arrive in UK 'in days' - BBC News.html"/>
+    <itemref idref="./bbc/Iraq violence: Dozens dead in Baghdad suicide attack on Shia - BBC News.html"/>
+    <itemref idref="./bbc/US election 2016: Trump says sex assault claims aimed to hurt him - BBC News.html"/>
+    <itemref idref="./bbc/US and Russia discuss Syria ceasefire in Switzerland - BBC News.html"/>
+    <itemref idref="./bbc/Brazil opens Latin America's first elephant sanctuary - BBC News.html"/>
+  </spine>
+</package>
